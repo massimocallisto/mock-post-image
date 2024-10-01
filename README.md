@@ -27,7 +27,7 @@ First, clone this repository and navigate to the project directory.
 To build the Docker image locally, run the following command:
 
 ```bash
-docker build -t flask-upload-api .
+docker build -t massimocallisto/flask-upload-api:1.0.0 .
 ```
 
 ## How to Run
@@ -47,9 +47,21 @@ By default, Flask will run on port 5000. You can access the API at http://127.0.
 ## Running with Docker
 Once the image is built, you can run it with Docker using the following command:
 
- ```bash
-docker run -p 3000:3000 flask-upload-api
+```bash
+docker run -p 3000:3000 massimocallisto/flask-upload-api:1.0.0
 ```
+
+If you want to mount an existing directory, create first in your file systems. E.g..: 
+
+ ```bash
+mkdir data-uploads
+```
+
+Then use:
+```bash
+docker run -p 3000:3000  -v "./data-uploads:/app/uploads" massimocallisto/flask-upload-api:1.0.0
+```
+
 
 This will map the container's port 3000 to your local machine's port 3000. You can access the API at http://127.0.0.1:3000/app/image.
 
